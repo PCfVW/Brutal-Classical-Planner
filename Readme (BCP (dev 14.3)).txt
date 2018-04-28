@@ -12,7 +12,7 @@ of the Game AI Pro 2 book ((c) 2015 CRC Press):
 
 https://www.crcpress.com/product/isbn/9781482254792
 
-This archive contains a PDF version of the chapter and all the files of a Visual Studio C++ 2017
+There is the PDF version of the chapter and all the files of a Visual Studio C++ 2017
 ((c) 2017 Microsoft Corporation) project.
 
 This project implements a forward-chaining state-space planner which gets planning problems written in a
@@ -25,12 +25,12 @@ on a (MSI GS63VR 7RG) laptop is 51 micro-seconds and 1079 bytes, respectively.
 
 You'll find the sources of the project in the "Headers & Sources" folder, and all about testing
 in the "PDDL Testing" folder (including a "Readme (PDDL Testing)" file) where there are several planning
-domains and problems. The remaining folders are as usual for a Visual Studio project.
+domains and problems.
 
 This project is given AS IS. There certainly are bugs. And some features certainly are missing.
 
 But the whole project is the result of several iterations: I wrote more than 20 planners since the
-beginning of the 90s and this one is the result of many tuning sessions and many optimization profiles.
+beginning of the 90s and this one is the result of many VTune sessions and many optimization profiles.
 However, as usual with somebody else's code, be careful!
 
 :-)
