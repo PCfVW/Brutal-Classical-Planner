@@ -7,7 +7,7 @@
 First of all, thank you for considering this planning work and, should you have any question about it,
 do not hesitate to contact me!
 
-This archive contains the code related to the chapter titled "Optimizing Practical Planning for Game AI"
+This repo contains the C++ code related to the chapter titled "Optimizing Practical Planning for Game AI"
 of the Game AI Pro 2 book ((c) 2015 CRC Press):
 
 https://www.crcpress.com/product/isbn/9781482254792
