@@ -3,16 +3,16 @@
 // ================================================================================================ File Content
 //
 // This file contains the following sections and subsections:
-//	- File History					(Line 17)
-//  - Inclusion of files			(Line 131)
-//	- Namespace declaration			(Line 142)
-//	- Comments						(Line 147)
-//	- Classes declarations			(Line 218)
-//		- Runtimes_timeb			(Line 218)
-//		- Runtimes_clock_t			(Line 295)
-//		- Runtimes_T_clock_t		(Line 347)
-//		- Runtimes_hrc				(Line 400)
-//		- Runtimes_T_hrc			(Line 491)
+//	- File History                  (Line 17)
+//  - Inclusion of files            (Line 131)
+//	- Namespace declaration         (Line 142)
+//	- Comments                      (Line 147)
+//	- Classes declarations          (Line 218)
+//		- Runtimes_timeb            (Line 218)
+//		- Runtimes_clock_t          (Line 295)
+//		- Runtimes_T_clock_t        (Line 347)
+//		- Runtimes_hrc              (Line 400)
+//		- Runtimes_T_hrc            (Line 491)
 //
 // ================================================================================================ File history
 //
@@ -21,8 +21,8 @@
 //
 //      - (dev 11): C++11 ------------------------------------------------------------- 15/DEC/2017
 //          ."0 error, 0 warning" with 2017
-//		- (dev 10): Precision --------------------------------------------------------- 05/OCT/2012
-//			.Precision/0 now returns an exponent value:
+//      - (dev 10): Precision --------------------------------------------------------- 05/OCT/2012
+//          .Precision/0 now returns an exponent value:
 //				.returns 0 for second == 10^0 == 1
 //				.returns -3 for milli-second == 10^(-3) == 0.001
 //				.returns -6 for micro-second == 10^(-6) == 0.000001
@@ -38,39 +38,39 @@
 //					std::cout.setf(std::ios_base::fixed, std::ios_base::floatfield);
 //					// (note the substraction as Precision/0 now returns a negative number)
 //					std::cout.precision(1 - r.Precision());
-//			.New file guard constant (_SPHG_TOOLS_RUNTIMES_H)
-//		- (dev 9): Time stamps -------------------------------------------------------- 06/JUN/2012
-//			.Comments corrected and updated
-//			.(Fix) Runtimes_timeb.Precision/0 returns 1 (seconds)
+//          .New file guard constant (_SPHG_TOOLS_RUNTIMES_H)
+//      - (dev 9): Time stamps -------------------------------------------------------- 06/JUN/2012
+//          .Comments corrected and updated
+//          .(Fix) Runtimes_timeb.Precision/0 returns 1 (seconds)
 //				(previously was 3 -- milli-seconds)
-//			.Runtime/0 no longer checks whether its parameter is a valid measure number
-//			.LastRuntime/0, Precision/0, Runtime/1 and TimeStamp/0 now return a const
-//			.Added private typedef Measure for the std::pair of time stamps
-//			.Added operation GetCounterFrequency/0 which returns the number of ticks of
+//          .Runtime/0 no longer checks whether its parameter is a valid measure number
+//          .LastRuntime/0, Precision/0, Runtime/1 and TimeStamp/0 now return a const
+//          .Added private typedef Measure for the std::pair of time stamps
+//          .Added operation GetCounterFrequency/0 which returns the number of ticks of
 //				the counter used by the class
-//			.Added operation TimeStamp/0 which returns the current time without storing it
-//		- (dev 8): VC++ 2003 & 2010 --------------------------------------------------- 13/MAR/2012
-//			."0 error, 0 warning" with 2010
-//			.Changes in order to get a "0 error, 0 warning" with Visual Studio 2003:
+//          .Added operation TimeStamp/0 which returns the current time without storing it
+//      - (dev 8): VC++ 2003 & 2010 --------------------------------------------------- 13/MAR/2012
+//          ."0 error, 0 warning" with 2010
+//          .Changes in order to get a "0 error, 0 warning" with Visual Studio 2003:
 //				.Comments updated
 //				. '>>' ending templates changed to '> >' 
 //				._timeb and _time_t respectively changed to __timeb64 and __time64_t
 //				."0 error, 0 warning" with 2003 AND 2008
-//		- (dev 7): Templates ---------------------------------------------------------- 02/NOV/2011
-//			.Comments improved
-//			.Classes renamed as follows:
+//      - (dev 7): Templates ---------------------------------------------------------- 02/NOV/2011
+//          .Comments improved
+//          .Classes renamed as follows:
 //				Runtimes_timeb, Runtimes_clock_t, Runtimes_T_clock_t, Runtimes_hrc and
 //				Runtimes_T_hrc
-//			.Added template classes Runtimes_T_clock_t and Runtimes_T_hrc
+//          .Added template classes Runtimes_T_clock_t and Runtimes_T_hrc
 //				These two classes provide a fix number (which is a template parameter)
 //					of measures whereas the other classes uses std:vector to store the
 //					measures
 //				The template parameter is here declared as an unsigned char:
 //					there can be at most 127 measures
-//		- (dev 6): Micro-seconds  ----------------------------------------------------- 03/SEP/2011
-//			.Comments improved
-//			.Both Runtimes_b::Runtime and Runtimes_b::LastRuntime now return a double
-//			.Added operation Precision/0 which informs about the precision of the measures:
+//      - (dev 6): Micro-seconds  ----------------------------------------------------- 03/SEP/2011
+//          .Comments improved
+//          .Both Runtimes_b::Runtime and Runtimes_b::LastRuntime now return a double
+//          .Added operation Precision/0 which informs about the precision of the measures:
 //				.Precision/0 returns 3 when the precision is up to the milli-second
 //				.Precision/0 returns 6 when the precision is up to the micro-second
 //				.Example 1:
@@ -85,38 +85,38 @@
 //					std::cout.setf(std::ios_base::fixed, std::ios_base::floatfield);
 //					 // (1 + the Precision())-digits for the fractional part
 //					std::cout.precision(r.Precision() + 1);
-//			.Added namespace SPHG for all classes of this file
-//			.Added class Runtimes_hrc which provides precision up to the micro-second
+//          .Added namespace SPHG for all classes of this file
+//          .Added class Runtimes_hrc which provides precision up to the micro-second
 //				.The frequency of the high resolution counter is 3579545 ticks per seconds
 //					as measured on an intel-based Windows machine.
 //				.(1 / 3579545) is about 279 * 10^-7 which gives a precision up to the micro-second
 //				.Added operation HighResolutionCounterIsSupported/0 to check whether the
 //					hardware supports such a high resolution counter
-//			.This file must be in the include directory of MSC++ and thus included with < and >
-//			.Removed conditional compiling data in order to be able to produce a DLL
-//		- (dev 5): DLL ---------------------------------------------------------------- 07/JUL/2011
-//			.Added conditional compiling data so as only MSC++ compiles _timeb and _ftime64 
-//			.Added conditional compiling data in order to be able to produce a DLL
-//			.LastRuntime/0 is now inlined
-//		- (dev 4): Improvements ------------------------------------------------------- 03/APR/2011
-//			.Added Class Runtimes_clock which computes runtimes from calls to clock()
-//			.Class Runtimes renamed Runtimes_b
-//			._ftime64_s changed to _ftime64 (warning 4996 is disabled through a #pragma)
-//			.Comments updated according to the above changes
-//		- (dev 3): Improvements ------------------------------------------------------- 02/FEB/2011
-//			.Added LastRuntime/0 to return the runtime of the last measure
-//			.Added default value 0 (zero) to Runtime/1's parameter
-//			.Runtime/1 is now a float-based const operation
-//			.Fixed 2 bugs in Runtime/2 when last-milli < first-milli
-//			.Added Clear/0 to clear theMeasures
-//			.Successive measures are now possible through the use of a vector
-//			.Comments improved
-//		- (dev 2): Improvements ------------------------------------------------------- 21/JUN/2010
-//			.The parameter of Runtime/1 is now passed as a const reference
-//			.Comments added
-//		- (dev 1): Basic functionalities ---------------------------------------------- 19/MAR/2010
-//			.Recording of departure and arrival times
-//			.String-based computation of the time between departure and arrival times
+//          .This file must be in the include directory of MSC++ and thus included with < and >
+//          .Removed conditional compiling data in order to be able to produce a DLL
+//      - (dev 5): DLL ---------------------------------------------------------------- 07/JUL/2011
+//          .Added conditional compiling data so as only MSC++ compiles _timeb and _ftime64 
+//          .Added conditional compiling data in order to be able to produce a DLL
+//          .LastRuntime/0 is now inlined
+//      - (dev 4): Improvements ------------------------------------------------------- 03/APR/2011
+//          .Added Class Runtimes_clock which computes runtimes from calls to clock()
+//          .Class Runtimes renamed Runtimes_b
+//          ._ftime64_s changed to _ftime64 (warning 4996 is disabled through a #pragma)
+//          .Comments updated according to the above changes
+//      - (dev 3): Improvements ------------------------------------------------------- 02/FEB/2011
+//          .Added LastRuntime/0 to return the runtime of the last measure
+//          .Added default value 0 (zero) to Runtime/1's parameter
+//          .Runtime/1 is now a float-based const operation
+//          .Fixed 2 bugs in Runtime/2 when last-milli < first-milli
+//          .Added Clear/0 to clear theMeasures
+//          .Successive measures are now possible through the use of a vector
+//          .Comments improved
+//      - (dev 2): Improvements ------------------------------------------------------- 21/JUN/2010
+//          .The parameter of Runtime/1 is now passed as a const reference
+//          .Comments added
+//      - (dev 1): Basic functionalities ---------------------------------------------- 19/MAR/2010
+//          .Recording of departure and arrival times
+//          .String-based computation of the time between departure and arrival times
 // ------------------------------------------------------------------------------------------------
 #ifndef _SPHG_TOOLS_RUNTIMES_H
 #define _SPHG_TOOLS_RUNTIMES_H
@@ -153,25 +153,25 @@ namespace SPHG {		// Simple Planning, Happy Gaming!
 // provided when the number of measures is known in advance; second (10^0), milli- (10^-3) and micro-
 // seconds (10^-6) precisions are provided on windows; milli-seconds precision is provided on Linux.
 //
-//		Class			Template		OS			Measuring type	 Precision	Included Header
+//      Class           Template        OS          Measuring type   Precision  Included Header
 // ---------------------------------------------------------------------------------------------
-//	Runtimes_timeb		  No		Windows			 __timeb64		   10^0		 <sys/timeb.h>
-//	Runtimes_clock_t      No		Unix + Windows	 clock_t		   10^-3	 <time.h>
-//	Runtimes_T_clock_t    Yes		Unix + Windows	 clock_t		   10^-3	 <time.h>
-//	Runtimes_hrc		  No		Windows			 LARGE_INTEGER	   10^-6	 <windows.h>
-//	Runtimes_T_hrc		  Yes		Windows			 LARGE_INTEGER	   10^-6	 <windows.h>
+//  Runtimes_timeb        No        Windows          __timeb64         10^0      <sys/timeb.h>
+//  Runtimes_clock_t      No        Unix + Windows   clock_t           10^-3     <time.h>
+//  Runtimes_T_clock_t    Yes       Unix + Windows   clock_t           10^-3     <time.h>
+//  Runtimes_hrc          No        Windows          LARGE_INTEGER     10^-6     <windows.h>
+//  Runtimes_T_hrc        Yes       Windows          LARGE_INTEGER     10^-6     <windows.h>
 //
 // All classes of this files are enclosed into the SPHG namespace.
 //
 // All classes possess the following operations (alphabetical order):
-//		- Clear/0 ---------------> void		// Forgets all the previous couples of Start and Stop
-//		- GetCounterFrequency/0				// Returns the number of ticks per second for the related counter
-//		- LastRuntime/0 ---------> double	// Returns the time difference between the very last couple of Start and Stop
-//		- Precision/0 -----------> short	// Returns 1 for seconds, 3 for milli-seconds and 6 for micro-seconds
-//		- Runtime/1	-------------> double	// Returns the time difference (cf. Precision/0) between a given couple of Start and Stop
-//		- Start/0 ---------------> void		// Records the current value of a specific counter
-//		- Stop/0 ----------------> void		// Records the current value of a specific counter and pairs it, as a measure, with that of the last call to Start/0
-//		- TimeStamp/0						// Returns the current value of a specific counter (cf. lines 150-159)
+//      - Clear/0 ---------------> void		// Forgets all the previous couples of Start and Stop
+//      - GetCounterFrequency/0				// Returns the number of ticks per second for the related counter
+//      - LastRuntime/0 ---------> double	// Returns the time difference between the very last couple of Start and Stop
+//      - Precision/0 -----------> short	// Returns 1 for seconds, 3 for milli-seconds and 6 for micro-seconds
+//      - Runtime/1	-------------> double	// Returns the time difference (cf. Precision/0) between a given couple of Start and Stop
+//      - Start/0 ---------------> void		// Records the current value of a specific counter
+//      - Stop/0 ----------------> void		// Records the current value of a specific counter and pairs it, as a measure, with that of the last call to Start/0
+//      - TimeStamp/0						// Returns the current value of a specific counter (cf. lines 150-159)
 //
 // A call to the operation Start/0 performs the first time measure. A call to the operation Stop/0
 // performs the second time measure; Stop/0 does not check whether Start/0 has been previously
@@ -192,23 +192,23 @@ namespace SPHG {		// Simple Planning, Happy Gaming!
 // TimeStamp/0 reads the current time, returns it and does NOT record it as a measure; the return type
 // varies according to the class:
 //
-//		Class					Return type of TimeStamp/0
+//     Class                     Return type of TimeStamp/0
 // --------------------------------------------------------
-//	Runtimes_timeb						__timeb64
-//	Runtimes_clock_t					double
-//	Runtimes_T_clock_t					double
-//	Runtimes_hrc						long double
-//	Runtimes_T_hrc						long double
+//  Runtimes_timeb                      __timeb64
+//  Runtimes_clock_t                    double
+//  Runtimes_T_clock_t                  double
+//  Runtimes_hrc                        long double
+//  Runtimes_T_hrc                      long double
 //
 // GetCounterFrequency/0 returns the number of ticks of the counter according to the class:
 //
-//		Class				Return type of GetCounterFrequency/0
+//     Class                 Return type of GetCounterFrequency/0
 // --------------------------------------------------------------
-//	Runtimes_timeb						unsigned int
-//	Runtimes_clock_t					unsigned int
-//	Runtimes_T_clock_t					unsigned int
-//	Runtimes_hrc						LONGLONG
-//	Runtimes_T_hrc						LONGLONG
+//  Runtimes_timeb                      unsigned int
+//  Runtimes_clock_t                    unsigned int
+//  Runtimes_T_clock_t                  unsigned int
+//  Runtimes_hrc                        LONGLONG
+//  Runtimes_T_hrc                      LONGLONG
 //
 // Moreover, classes Runtimes_hrc and Runtimes_T_hrc provide operation HighResolutionCounterIsSupported/0
 // in order to test whether the hardware (where compiling happens) supports a high resolution counter.
