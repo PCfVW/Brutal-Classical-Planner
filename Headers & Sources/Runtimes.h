@@ -8,11 +8,11 @@
 //	- Namespace declaration         (Line 142)
 //	- Comments                      (Line 147)
 //	- Classes declarations          (Line 218)
-//		- Runtimes_timeb            (Line 218)
-//		- Runtimes_clock_t          (Line 295)
-//		- Runtimes_T_clock_t        (Line 347)
-//		- Runtimes_hrc              (Line 400)
-//		- Runtimes_T_hrc            (Line 491)
+//	- Runtimes_timeb                (Line 218)
+//	- Runtimes_clock_t              (Line 295)
+//	- Runtimes_T_clock_t            (Line 347)
+//	- Runtimes_hrc                  (Line 400)
+//	- Runtimes_T_hrc                (Line 491)
 //
 // ================================================================================================ File history
 //
@@ -121,27 +121,27 @@
 #ifndef _SPHG_TOOLS_RUNTIMES_H
 #define _SPHG_TOOLS_RUNTIMES_H
 
-#if defined(_MSC_VER)				// _MSC_VER reports the major and minor versions of the Microsoft C++ compiler
-	#pragma once					// When compiling, this file will be included (opened) only once by the Microsoft C++ compiler 
-	#pragma warning(push)			// Stores the current warning state for all warnings
-	#pragma warning(disable : 4996)	// 4996 <=> _CRT_SECURE_NO_WARNINGS is now OFF (NO WARNING for the use of _ftime64); see warning(pop) at the end of this file, line 588
-#endif								// _MSC_VER
+#if defined(_MSC_VER)               // _MSC_VER reports the major and minor versions of the Microsoft C++ compiler
+	#pragma once                    // When compiling, this file will be included (opened) only once by the Microsoft C++ compiler 
+	#pragma warning(push)           // Stores the current warning state for all warnings
+	#pragma warning(disable : 4996) // 4996 <=> _CRT_SECURE_NO_WARNINGS is now OFF (NO WARNING for the use of _ftime64); see warning(pop) at the end of this file, line 588
+#endif                              // _MSC_VER
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////// Inclusion of files
 //
-#if defined(_MSC_VER)				// _MSC_VER reports the major and minor versions of the Microsoft C++ compiler
-	#include <sys/timeb.h>			// Visibility for __time64_t, __timeb64 and _ftime64/1 in class Runtimes_timeb
-	#include <windows.h>			// Visibility for LARGE_INTEGER, LONGLONG, QueryPerformanceFrequency/1 and QueryPerformanceCounter/1
-#endif								// _MSC_VER
+#if defined(_MSC_VER)               // _MSC_VER reports the major and minor versions of the Microsoft C++ compiler
+	#include <sys/timeb.h>          // Visibility for __time64_t, __timeb64 and _ftime64/1 in class Runtimes_timeb
+	#include <windows.h>            // Visibility for LARGE_INTEGER, LONGLONG, QueryPerformanceFrequency/1 and QueryPerformanceCounter/1
+#endif                              // _MSC_VER
 
-#include <time.h>					// Visibility for time_t, clock_t, clock/0 and CLOCKS_PER_SEC
-#include <vector>					// The Store House for successive runtime measures in classes Runtimes_timeb, Runtimes_clock and Runtimes_hrc
+#include <time.h>                   // Visibility for time_t, clock_t, clock/0 and CLOCKS_PER_SEC
+#include <vector>                   // The Store House for successive runtime measures in classes Runtimes_timeb, Runtimes_clock and Runtimes_hrc
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////// Namespace declaration
 //
-namespace SPHG {		// Simple Planning, Happy Gaming!
+namespace SPHG {        // Simple Planning, Happy Gaming!
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////// Comments
@@ -164,14 +164,14 @@ namespace SPHG {		// Simple Planning, Happy Gaming!
 // All classes of this files are enclosed into the SPHG namespace.
 //
 // All classes possess the following operations (alphabetical order):
-//      - Clear/0 ---------------> void		// Forgets all the previous couples of Start and Stop
-//      - GetCounterFrequency/0				// Returns the number of ticks per second for the related counter
-//      - LastRuntime/0 ---------> double	// Returns the time difference between the very last couple of Start and Stop
-//      - Precision/0 -----------> short	// Returns 1 for seconds, 3 for milli-seconds and 6 for micro-seconds
-//      - Runtime/1	-------------> double	// Returns the time difference (cf. Precision/0) between a given couple of Start and Stop
-//      - Start/0 ---------------> void		// Records the current value of a specific counter
-//      - Stop/0 ----------------> void		// Records the current value of a specific counter and pairs it, as a measure, with that of the last call to Start/0
-//      - TimeStamp/0						// Returns the current value of a specific counter (cf. lines 150-159)
+//      - Clear/0 ---------------> void     // Forgets all the previous couples of Start and Stop
+//      - GetCounterFrequency/0             // Returns the number of ticks per second for the related counter
+//      - LastRuntime/0 ---------> double   // Returns the time difference between the very last couple of Start and Stop
+//      - Precision/0 -----------> short    // Returns 1 for seconds, 3 for milli-seconds and 6 for micro-seconds
+//      - Runtime/1	-------------> double   // Returns the time difference (cf. Precision/0) between a given couple of Start and Stop
+//      - Start/0 ---------------> void     // Records the current value of a specific counter
+//      - Stop/0 ----------------> void     // Records the current value of a specific counter and pairs it, as a measure, with that of the last call to Start/0
+//      - TimeStamp/0                       // Returns the current value of a specific counter (cf. lines 150-159)
 //
 // A call to the operation Start/0 performs the first time measure. A call to the operation Stop/0
 // performs the second time measure; Stop/0 does not check whether Start/0 has been previously
@@ -227,9 +227,9 @@ class Runtimes_timeb {
 
 	// ----- Properties
 	private:
-		std::vector<Measure> theMeasures;	// Pairs of first and last measures so as to compute run times
-		__timeb64 theFirstMeasure;			// Set by Start/0
-		__timeb64 theLastMeasure;			// Set by Stop/0
+		std::vector<Measure> theMeasures;   // Pairs of first and last measures so as to compute run times
+		__timeb64 theFirstMeasure;          // Set by Start/0
+		__timeb64 theLastMeasure;           // Set by Stop/0
 
 	// ----- Constructors
 	public:
@@ -301,9 +301,9 @@ class Runtimes_clock_t {
 
 	// ----- Properties
 	private:
-		std::vector<Measure> theMeasures;	// Pairs of first and last measures so as to compute run times
-		clock_t theStart;					// Set by Start/0
-		clock_t theFinish;					// Set by Stop/0
+		std::vector<Measure> theMeasures;   // Pairs of first and last measures so as to compute run times
+		clock_t theStart;                   // Set by Start/0
+		clock_t theFinish;                  // Set by Stop/0
 
 	// ----- Constructors
 	public:
@@ -354,9 +354,9 @@ template<unsigned char n = 1> class Runtimes_T_clock_t {
 	// ----- Properties
 	private:
 		Measure theMeasures[n];
-		unsigned char theNumberOfMeasures;	// Pairs of first and last measures so as to compute run times
-		clock_t theStart;					// Set by Start/0
-		clock_t theFinish;					// Set by Stop/0
+		unsigned char theNumberOfMeasures;  // Pairs of first and last measures so as to compute run times
+		clock_t theStart;                   // Set by Start/0
+		clock_t theFinish;                  // Set by Stop/0
 
 	// ----- Constructors
 	public:
@@ -407,12 +407,12 @@ class Runtimes_hrc {
 
 	// ----- Properties
 	private:
-		bool HighResolutionCounterSupported;	// True when the hardware supports a high-resolution performance counter
-		LONGLONG thePerformanceFrequency;		// (== 3579545) The frequency of the high-resolution performance counter; set to zero by the constructor of this class when no such counter exists
+		bool HighResolutionCounterSupported;    // True when the hardware supports a high-resolution performance counter
+		LONGLONG thePerformanceFrequency;       // (== 3579545) The frequency of the high-resolution performance counter; set to zero by the constructor of this class when no such counter exists
 
-		std::vector<Measure> theMeasures;		// Pairs of first and last measures so as to compute run times
-		LARGE_INTEGER theStart;					// Queried value of the high-resolution performance counter, Set by Start/0
-		LARGE_INTEGER theFinish;				// Queried value of the high-resolution performance counter, Set by Stop/0
+		std::vector<Measure> theMeasures;       // Pairs of first and last measures so as to compute run times
+		LARGE_INTEGER theStart;                 // Queried value of the high-resolution performance counter, Set by Start/0
+		LARGE_INTEGER theFinish;                // Queried value of the high-resolution performance counter, Set by Stop/0
 
 	// ----- Constructor
 	public:
@@ -497,13 +497,13 @@ template<unsigned char n = 1> class Runtimes_T_hrc {
 
 	// ----- Properties
 	private:
-		bool HighResolutionCounterSupported;	// True when the hardware supports a high-resolution performance counter
-		LONGLONG thePerformanceFrequency;		// (== 3579545) The frequency of the high-resolution performance counter; set to zero by the constructor of this class when no such counter exists
+		bool HighResolutionCounterSupported;    // True when the hardware supports a high-resolution performance counter
+		LONGLONG thePerformanceFrequency;       // (== 3579545) The frequency of the high-resolution performance counter; set to zero by the constructor of this class when no such counter exists
 
-		Measure theMeasures[n];					// Pairs of first and last measures so as to compute run times
-		unsigned char theNumberOfMeasures;		// Allow a fast Clear/0, for instance
-		LARGE_INTEGER theStart;					// Queried value of the high-resolution performance counter, Set by Start/0
-		LARGE_INTEGER theFinish;				// Queried value of the high-resolution performance counter, Set by Stop/0
+		Measure theMeasures[n];                 // Pairs of first and last measures so as to compute run times
+		unsigned char theNumberOfMeasures;      // Allow a fast Clear/0, for instance
+		LARGE_INTEGER theStart;                 // Queried value of the high-resolution performance counter, Set by Start/0
+		LARGE_INTEGER theFinish;                // Queried value of the high-resolution performance counter, Set by Stop/0
 
 	// ----- Constructor
 	public:
@@ -578,17 +578,17 @@ template<unsigned char n = 1> class Runtimes_T_hrc {
 		}
 
 };
-#endif					// _MSC_VER
+#endif                  // _MSC_VER
 
-}						// namespace SPHG
+}                       // namespace SPHG
 //
 // ------------------------------------------------------------------------------------------------
 //
-#if defined(_MSC_VER)		// _MSC_VER reports the major and minor versions of the Microsoft C++ compiler
-	#pragma warning(pop)	// Pops the last warning state pushed onto the stack : C4996 is ON again
+#if defined(_MSC_VER)       // _MSC_VER reports the major and minor versions of the Microsoft C++ compiler
+	#pragma warning(pop)    // Pops the last warning state pushed onto the stack : C4996 is ON again
 #endif
 //
 // ------------------------------------------------------------------------------------------------
 //
-#endif						// _SPHG_TOOLS_RUNTIMES_H
+#endif                      // _SPHG_TOOLS_RUNTIMES_H
 // ================================================================================================ End of file "Runtimes.h"
