@@ -191,7 +191,7 @@ State StateSpaceForwardChaining::Apply(const State& aCurrentState, const Operato
 			}
 		}
 
-		// Union the the set of predicates of newCurrentState with the added predicates of this Operator
+		// Union the set of predicates of newCurrentState with the added predicates of this Operator
 		for (Operator::HPredicate add = thePositionOfAdditions; add < thePositionOfNegativePreconditions; ++add)
 		{
 			// In this range, all the predicates only belong to the add list.
@@ -267,7 +267,7 @@ State StateSpaceForwardChaining::Apply(const State& aCurrentState, const Operato
 		// Check the positive preconditions
 		for (std::vector<std::vector<Operator::Positions>>::size_type par = 0; par < Op->GetthePositionsSize(); ++par)
 		{
-			// Check values from these state predicate parameters are all be equal
+			// Check values from these state predicate parameters are allS equal
 			PDDL::HIdentifier ref = StateSpaceForwardChaining::GetthePredicate(D[Op->GetthePosition(par, 0).first]).GettheParameter(Op->GetthePosition(par, 0).second);
 			for (std::vector<Operator::Positions>::size_type pos = 1; pos < Op->GetthePositionsSize(par); ++pos)
 			{
