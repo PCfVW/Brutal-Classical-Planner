@@ -3,7 +3,7 @@
 // ------------------------------------------------------------------------------------------------
 Please recall that you should not hesitate to contact me!
 
-This directory, "PDDL Testting/" is a test directory for the BCP planner; it contains:
+This directory, "PDDL Testing/" is a test directory for the BCP planner; it contains:
    - This file
    - One .exe file of the "BCP (dev 14.3)" planner
    - One .PDF file ("BNF 3.1.PDDL.pdf") which details the Complete BNF description of PDDL 3.1
