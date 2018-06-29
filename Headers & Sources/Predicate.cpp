@@ -4,7 +4,7 @@
 //
 //					  Unify/2 --- Simple unification (unsigned integer/string based) of this predicate with aPredicate
 //					  Match/2 --- Simple pattern matching (unsigned integer/string based) of this predicate with aPredicate
-//		UpdatetheParameters/1 --- set theParameters of this Predicate to values from the parameters of an Operator (after Unification has succeeded)
+//		UpdatetheParameters/1 --- set theParameters of this Predicate to values from the parameters of an Operator (after Unify/2 has succeeded)
 //					 SizeOf/0 --- Memory size for this predicate
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -17,7 +17,7 @@
 
 /////////////////////////////////////////////////////////////////////////////////////////////////// Unify/2
 //
-// When entering calling this function, it is assumed that:
+// When calling this function, it is assumed that:
 //	- the identifier of this Predicate AND of aPredicate are the same (verified in StateSpaceForwardChaining::Expand/2)
 //	- ALL the parameters of this Predicate points to theParameters of anOperator
 //	- ALL the parameters of aPredicate are valued
