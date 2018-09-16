@@ -11,10 +11,10 @@
 //
 // ================================================================================================ File history
 //
-// [Author, Created, Last modification] = [Éric JACOPIN, 27/SEP/2011, 12/DEC/2017]
+// [Author, Created, Last modification] = [Éric JACOPIN, 27/SEP/2011, 16/SEP/2018]
 //	Compilers:	MSVC++ 2008, 2010, 2012, 2013 and 2017 (NEITHER TESTED WITH 2003 NOR 2005)
 //
-//      - (dev 6): VS2017 and comments ------------------------------------------------------------ 12/DEC/2017
+//      - (dev 6): VS2017 and comments ------------------------------------------------------------ 16/SEP/2018
 //			.Comments improved and corrected
 //			.Compiled with MSVC++ 2017 (i.e. compliant with C++11)
 //		- (dev 5): 64 bits ------------------------------------------------------------------------ 18/JUL/2013
@@ -204,7 +204,7 @@ template <class N, unsigned char cardinal> class uset {
 			return (0);
 		}
 		inline N next(N element) const {
-			// Don't check whether element is part of this set.
+			// !!! next/1 doesn't check whether element is part of this set !!!
 			// Move to element's position to next member in this set, as long as (element < last); return (++last) otherwise:
 
 			// Compute both the corresponding unsigned integer and the corresponding bit
@@ -223,7 +223,7 @@ template <class N, unsigned char cardinal> class uset {
 					for (unsigned char p = 0; p < NUMBER_OF_BITS_PER_UNSIGNED_INTEGER; ++p)
 						if ((theSet[s] >> p) & 1)
 							return ((s << EXPONENT /* == s * NUMBER_OF_BITS_PER_UNSIGNED_INTEGER */) + p);
-			// Return (++element -- element was incremented in line 204 above) when no next element can be found
+			// Return (++element -- element was incremented in line 211 above) when no next element can be found
 			return (element);
 		}
 		inline size_type size() const {
@@ -238,18 +238,21 @@ template <class N, unsigned char cardinal> class uset {
 			return theSize;
 		}
 		inline bool find(const N element) const {
+			// !!! find/1 doesn't check whether element is part of this set !!!
 			// Compute both the corresponding unsigned integer and the corresponding bit
 			div_t r = div(element, NUMBER_OF_BITS_PER_UNSIGNED_INTEGER);
 			// Return the value of the bit corresponding to element
 			return ((theSet[r.quot] >> r.rem) & 1);
 		}
 		inline void insert(const N element) {
+			// !!! insert/1 doesn't check whether element is part of this set !!!
 			// Compute both the corresponding unsigned integer and the corresponding bit
 			div_t r = div(element, NUMBER_OF_BITS_PER_UNSIGNED_INTEGER);
 			// Set the position of element to 1
 			theSet[r.quot] |= (1 << r.rem);
 		}
 		inline void erase(const N element) {
+			// !!! erase/1 doesn't check whether element is part of this set !!!
 			// Compute both the corresponding unsigned integer and the corresponding bit
 			div_t r = div(element, NUMBER_OF_BITS_PER_UNSIGNED_INTEGER);
 			// Set the position of element to 0
