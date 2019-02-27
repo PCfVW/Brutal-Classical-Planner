@@ -1,5 +1,5 @@
 // ================================================================================================ Beginning of file "StateSpaceForwardChaining.h"
-// Copyright (c) 2012-2018, Eric Jacopin, ejacopin@ymail.com
+// Copyright (c) 2012-2019, Eric Jacopin, ejacopin@ymail.com
 // ------------------------------------------------------------------------------------------------
 #ifndef _SPHG_PLANNER_SEARCH_SSFC_H
 #define _SPHG_PLANNER_SEARCH_SSFC_H

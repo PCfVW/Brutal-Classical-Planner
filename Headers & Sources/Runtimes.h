@@ -1,24 +1,27 @@
 // ================================================================================================ Beginning of file "Runtimes.h"
-// Copyright (c) 2010-2018, Eric Jacopin, ejacopin@ymail.com
+// Copyright (c) 2010-2019, Eric Jacopin, ejacopin@ymail.com
 // ================================================================================================ File Content
 //
 // This file contains the following sections and subsections:
 //	- File History                  (Line 17)
-//  - Inclusion of files            (Line 131)
-//	- Namespace declaration         (Line 142)
-//	- Comments                      (Line 147)
-//	- Classes declarations          (Line 218)
-//	- Runtimes_timeb                (Line 218)
-//	- Runtimes_clock_t              (Line 295)
-//	- Runtimes_T_clock_t            (Line 347)
-//	- Runtimes_hrc                  (Line 400)
-//	- Runtimes_T_hrc                (Line 491)
+//  - Inclusion of files            (Line 133)
+//	- Namespace declaration         (Line 145)
+//	- Comments                      (Line 150)
+//	- Classes declarations          (Line 221)
+//	- Runtimes_timeb                (Line 221)
+//	- Runtimes_clock_t              (Line 298)
+//	- Runtimes_T_clock_t            (Line 350)
+//	- Runtimes_hrc                  (Line 403)
+//	- Runtimes_T_hrc                (Line 494)
 //
 // ================================================================================================ File history
 //
 // [Author, Created, Last modification] = [Éric JACOPIN, 28/FEV/2010, 15/DEC/2017]
 //	Compilers:	MSVC++ 2003, 2008, 2010, 2012, 2013 and 2017 (NOT TESTED WITH 2005); GCC 3.2
 //
+//      - (dev 12): TimeStamp const --------------------------------------------------- dd/mmm/2018
+//          . Fixed a compilation error with Runtimes_T_hrc::TimeStamp/0 which cannot be
+//            a const operation. (!!!!!)
 //      - (dev 11): C++11 ------------------------------------------------------------- 15/DEC/2017
 //          ."0 error, 0 warning" with 2017
 //      - (dev 10): Precision --------------------------------------------------------- 05/OCT/2012
@@ -124,7 +127,7 @@
 #if defined(_MSC_VER)               // _MSC_VER reports the major and minor versions of the Microsoft C++ compiler
 	#pragma once                    // When compiling, this file will be included (opened) only once by the Microsoft C++ compiler 
 	#pragma warning(push)           // Stores the current warning state for all warnings
-	#pragma warning(disable : 4996) // 4996 <=> _CRT_SECURE_NO_WARNINGS is now OFF (NO WARNING for the use of _ftime64); see warning(pop) at the end of this file, line 588
+	#pragma warning(disable : 4996) // 4996 <=> _CRT_SECURE_NO_WARNINGS is now OFF (NO WARNING for the use of _ftime64); see warning(pop) at the end of this file, line 591
 #endif                              // _MSC_VER
 
 
@@ -163,7 +166,7 @@ namespace SPHG {        // Simple Planning, Happy Gaming!
 //
 // All classes of this files are enclosed into the SPHG namespace.
 //
-// All classes possess the following operations (alphabetical order):
+// All classes provide the following operations (alphabetical order):
 //      - Clear/0 ---------------> void     // Forgets all the previous couples of Start and Stop
 //      - GetCounterFrequency/0             // Returns the number of ticks per second for the related counter
 //      - LastRuntime/0 ---------> double   // Returns the time difference between the very last couple of Start and Stop
@@ -171,7 +174,7 @@ namespace SPHG {        // Simple Planning, Happy Gaming!
 //      - Runtime/1	-------------> double   // Returns the time difference (cf. Precision/0) between a given couple of Start and Stop
 //      - Start/0 ---------------> void     // Records the current value of a specific counter
 //      - Stop/0 ----------------> void     // Records the current value of a specific counter and pairs it, as a measure, with that of the last call to Start/0
-//      - TimeStamp/0                       // Returns the current value of a specific counter (cf. lines 150-159)
+//      - TimeStamp/0                       // Returns the current value of a specific counter (cf. lines 195-204)
 //
 // A call to the operation Start/0 performs the first time measure. A call to the operation Stop/0
 // performs the second time measure; Stop/0 does not check whether Start/0 has been previously
@@ -532,7 +535,7 @@ template<unsigned char n = 1> class Runtimes_T_hrc {
 			theNumberOfMeasures = 0;
 		}
 
-		inline const long double TimeStamp() const {
+		inline const long double TimeStamp() {
 			// IF the query of the performance counter fails THEN
 			//		the counter value == 0
 			//		checking of this zero counter value is left to the user of this function

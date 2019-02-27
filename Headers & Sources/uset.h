@@ -1,5 +1,5 @@
 // ================================================================================================ Beginning of file "uset.h"
-// Copyright (c) 2012-2018, Eric Jacopin, ejacopin@ymail.com
+// Copyright (c) 2012-2019, Eric Jacopin, ejacopin@ymail.com
 // ================================================================================================ File Content
 //
 // This file contains the following sections and subsections:
@@ -90,7 +90,7 @@ namespace SPHG		{	// Simple Planning, Happy Gaming!
 //			SPHG::uset<short, 14>   my_uset;
 //
 //		Where:
-//			- SPHG is the namespace provided with this file
+//			- SPHG is the namespace provided by this file
 //			- type short ranges from -32768 to 32767 (Microsoft Visual Studio C++)
 //			- uset<short, 14> implements the following set range: [0, 447 (== (32 * 14) - 1)]
 //			- my_uset is a subset of the range [-32768, 32767] based on the type short
