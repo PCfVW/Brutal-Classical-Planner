@@ -1,5 +1,5 @@
 // ================================================================================================ Beginning of file ConditionalCompiling.h
-// Copyright (c) 2012-2018, Eric Jacopin, ejacopin@ymail.com
+// Copyright (c) 2012-2019, Eric Jacopin, ejacopin@ymail.com
 // ------------------------------------------------------------------------------------------------
 #ifndef _SPHG_PLANNER_CONDITIONAL_COMPILING_H
 #define _SPHG_PLANNER_CONDITIONAL_COMPILING_H

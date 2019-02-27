@@ -1,5 +1,5 @@
 // ================================================================================================ Beginning of file "InternalTypes.h"
-// Copyright (c) 2012-2018, Eric Jacopin, ejacopin@ymail.com
+// Copyright (c) 2012-2019, Eric Jacopin, ejacopin@ymail.com
 // ------------------------------------------------------------------------------------------------
 #ifndef _INTERNAL_TYPES_H
 #define _INTERNAL_TYPES_H
