@@ -1,5 +1,5 @@
 // ================================================================================================ Beginning of file "Readme (PDDL Testing).txt"
-// Copyright (c) 2012-2018, Eric Jacopin, ejacopin@ymail.com
+// Copyright (c) 2012-2019, Eric Jacopin, ejacopin@ymail.com
 // ------------------------------------------------------------------------------------------------
 Please recall that you should not hesitate to contact me!
 
