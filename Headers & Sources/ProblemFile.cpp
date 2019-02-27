@@ -1,5 +1,5 @@
 // ================================================================================================ Beginning of file ProblemFile.cpp
-// Copyright (c) 2012-2018, Eric Jacopin, ejacopin@ymail.com
+// Copyright (c) 2012-2019, Eric Jacopin, ejacopin@ymail.com
 /////////////////////////////////////////////////////////////////////////////////////////////////// File Content
 //
 //	ProblemFile/4 --- (READ THE WARNING BELOW) Constructs various structures for this problem while reading a PDDL Problem file

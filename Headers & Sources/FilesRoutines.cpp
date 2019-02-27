@@ -1,9 +1,9 @@
 // ================================================================================================ Beginning of file "FilesRoutines.cpp"
-// Copyright (c) 2012-2018, Eric Jacopin, ejacopin@ymail.com
+// Copyright (c) 2012-2019, Eric Jacopin, ejacopin@ymail.com
 /////////////////////////////////////////////////////////////////////////////////////////////////// File Content
 //
 //		 GetNextToken/6 --- Get the next identifier or PDDL Keyword
-//			 GetArity/7 --- (GetNextToken/6-based) Get the number of parameters of a predicate or a function
+//			 GetArity/7 --- (GetNextToken/6-based) Get the number of parameters of a PDDL predicate or a PDDL function
 //	  ValidPDDLNumber/2 --- Convert a token made of '0' to '9' digit characters + '.' into a number
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////

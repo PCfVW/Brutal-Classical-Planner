@@ -1,5 +1,5 @@
 // ================================================================================================ Beginning of file "main_BCP.cpp"
-// Copyright (c) 2012-2018, Eric Jacopin, ejacopin@ymail.com
+// Copyright (c) 2012-2019, Eric Jacopin, ejacopin@ymail.com
 /////////////////////////////////////////////////////////////////////////////////////////////////// File Content
 //
 //	This file contains the code for the following target of the BCP planning component:
