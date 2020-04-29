@@ -1,5 +1,5 @@
 // ================================================================================================ Beginning of file "Readme (BCP (dev 14.3)).txt"
-// Copyright (c) 2012-2019, Eric Jacopin, ejacopin@ymail.com
+// Copyright (c) 2012-2020, Eric Jacopin, ejacopin@ymail.com
 // ------------------------------------------------------------------------------------------------
 
    Hello!
@@ -7,8 +7,8 @@
 First of all, thank you for considering this planning work and, should you have any question about it,
 do not hesitate to contact me!
 
-This repo contains the C++ code related to the chapter titled "Optimizing Practical Planning for Game AI"
-of the Game AI Pro 2 book ((c) 2015 CRC Press):
+This repo contains the C++ code related to the chapter 13 of the Game AI Pro 2 book, titled
+"Optimizing Practical Planning for Game AI" ((c) 2015 CRC Press):
 
 https://www.crcpress.com/product/isbn/9781482254792
 
@@ -38,7 +38,7 @@ However, as usual with somebody else's code, be careful!
 If you need to adapt the code for your project, want to reuse part of it or..., then do not hesitate
 to contact me! I'll be happy not only to know about it but also to help you.
 
-Double-click on the "BCP (dev 14.3).sln" file in this folder and enjoy!
+Once dowloaded, double-click on the "BCP (dev 14.3).sln" file in this folder and enjoy!
 
     Bien sincèrement,
 
